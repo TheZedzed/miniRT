@@ -6,7 +6,7 @@
 #    By: azeraoul <azeraoul@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/04 19:38:42 by azeraoul          #+#    #+#              #
-#    Updated: 2021/04/16 11:54:05 by thezedzed        ###   ########.fr        #
+#    Updated: 2021/04/16 16:04:29 by thezedzed        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ LIBFT_NAME	:= libft.a
 MLX_DIR		:= ./lib/mlx/
 MLX_NAME	:= libmlx_Linux.a
 INCS_DIR	:= ./includes/
-MLX_NAME	:= libmlx.a
 LDFLAGS		:= -lXext -lX11 -lm -lpthread 
 CFLAGS		:= -Wall -Wextra -Werror 
 SRCS		:= $(addprefix ./srcs/, minirt.c vector_ope.c vector_norm.c \

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thezedzed <marvin@42.fr>                   +#+  +:+       +#+         #
+#    By: azeraoul <azeraoul@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/16 13:42:34 by thezedzed         #+#    #+#              #
-#    Updated: 2021/04/16 13:42:36 by thezedzed        ###   ########.fr        #
+#    Created: 2021/03/04 19:38:42 by azeraoul          #+#    #+#              #
+#    Updated: 2021/04/16 16:04:13 by thezedzed        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,10 @@ NAME		:= miniRT
 
 LIBFT_DIR	:= ./lib/libft/
 LIBFT_NAME	:= libft.a
+MLX_DIR		:= ./lib/mlx/
 INCS_DIR	:= ./includes/
-LDFLAGS		:= -lmlx -framework OpenGL -framework AppKit -lm -lpthread 
+MLX_NAME	:= libmlx.a
+LDFLAGS		:= -lmlx -framework OpenGL -framework AppKit
 CFLAGS		:= -Wall -Wextra -Werror 
 SRCS		:= $(addprefix ./srcs/, minirt.c vector_ope.c vector_norm.c \
 			inter.c multithreading.c ray_tracer.c parser/parser.c \
@@ -34,11 +36,12 @@ all: 		$(NAME)
 bonus:		$(NAME)
 
 %.o: %.c 
-			@$(CC) $(CFLAGS) -I$(INCS_DIR) -I$(LIBFT_DIR)include -c $< -o $@
+			@$(CC) $(CFLAGS) -I$(INCS_DIR) -I$(MLX_DIR) -I$(LIBFT_DIR)include -c $< -o $@
 
 $(NAME): $(OBJS) 
+			@make --silent -C $(MLX_DIR)
 			@make --silent -C $(LIBFT_DIR)
-			@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)$(LIBFT_NAME) $(LDFLAGS) -o $@
+			@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)$(LIBFT_NAME) $(MLX_DIR)$(MLX_NAME) $(LDFLAGS) -o $@
 
 clean:
 			@make clean --silent -C $(LIBFT_DIR)
